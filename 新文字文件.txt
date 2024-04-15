@@ -1,0 +1,170 @@
+======Client======
+
+ryanpan@RyanPanPC $ python3 main_client.py 
+
+add: Add a student's name and score
+show: Print all
+exit: Exit
+Please select: show
+    The client sent data => {'command': 'show', 'parameters': {}}
+    The client received data => {'status': 'OK', 'parameters': {}}
+
+==== student list ====
+
+======================
+
+add: Add a student's name and score
+show: Print all
+exit: Exit
+Please select: add
+  Please input a student's name: Bill
+  Please input a subject name or exit for ending: English
+  Please input Bill's English score or < 0 for discarding the subject: 99
+  Please input a subject name or exit for ending: Chinese
+  Please input Bill's Chinese score or < 0 for discarding the subject: 60
+  Please input a subject name or exit for ending: exit
+    The client sent data => {'command': 'add', 'parameters': {'name': 'Bill', 'scores': {'English': 99.0, 'Chinese': 60.0}}}
+    The client received data => {'status': 'OK'}
+    Add {'name': 'Bill', 'scores': {'English': 99.0, 'Chinese': 60.0}} success
+
+add: Add a student's name and score
+show: Print all
+exit: Exit
+Please select: show 
+    The client sent data => {'command': 'show', 'parameters': {}}
+    The client received data => {'status': 'OK', 'parameters': {'Bill': {'name': 'Bill', 'scores': {'English': 99.0, 'Chinese': 60.0}}}}
+
+==== student list ====
+
+Name: Bill
+  subject: English, score: 99.0
+  subject: Chinese, score: 60.0
+
+======================
+
+add: Add a student's name and score
+show: Print all
+exit: Exit
+Please select: add
+  Please input a student's name: John
+  Please input a subject name or exit for ending: Math
+  Please input John's Math score or < 0 for discarding the subject: 80
+  Please input a subject name or exit for ending: exit
+    The client sent data => {'command': 'add', 'parameters': {'name': 'John', 'scores': {'Math': 80.0}}}
+    The client received data => {'status': 'OK'}
+    Add {'name': 'John', 'scores': {'Math': 80.0}} success
+
+add: Add a student's name and score
+show: Print all
+exit: Exit
+Please select: show
+    The client sent data => {'command': 'show', 'parameters': {}}
+    The client received data => {'status': 'OK', 'parameters': {'Bill': {'name': 'Bill', 'scores': {'English': 99.0, 'Chinese': 60.0}}, 'John': {'name': 'John', 'scores': {'Math': 80.0}}}}
+
+==== student list ====
+
+Name: Bill
+  subject: English, score: 99.0
+  subject: Chinese, score: 60.0
+
+Name: John
+  subject: Math, score: 80.0
+
+======================
+
+add: Add a student's name and score
+show: Print all
+exit: Exit
+Please select: add
+  Please input a student's name: John
+  Please input a subject name or exit for ending: English
+  Please input John's English score or < 0 for discarding the subject: 90
+  Please input a subject name or exit for ending: exit
+    The client sent data => {'command': 'add', 'parameters': {'name': 'John', 'scores': {'English': 90.0}}}
+    The client received data => {'status': 'Fail', 'reason': 'The name already exists.'}
+    Add {'name': 'John', 'scores': {'English': 90.0}} fail
+
+add: Add a student's name and score
+show: Print all
+exit: Exit
+Please select: show
+    The client sent data => {'command': 'show', 'parameters': {}}
+    The client received data => {'status': 'OK', 'parameters': {'Bill': {'name': 'Bill', 'scores': {'English': 99.0, 'Chinese': 60.0}}, 'John': {'name': 'John', 'scores': {'Math': 80.0}}}}
+
+==== student list ====
+
+Name: Bill
+  subject: English, score: 99.0
+  subject: Chinese, score: 60.0
+
+Name: John
+  subject: Math, score: 80.0
+
+======================
+
+add: Add a student's name and score
+show: Print all
+exit: Exit
+Please select: exit
+ryanpan@RyanPanPC $ python3 main_client.py 
+
+add: Add a student's name and score
+show: Print all
+exit: Exit
+Please select: show
+    The client sent data => {'command': 'show', 'parameters': {}}
+    The client received data => {'status': 'OK', 'parameters': {'Bill': {'name': 'Bill', 'scores': {'English': 99.0, 'Chinese': 60.0}}, 'John': {'name': 'John', 'scores': {'Math': 80.0}}}}
+
+==== student list ====
+
+Name: Bill
+  subject: English, score: 99.0
+  subject: Chinese, score: 60.0
+
+Name: John
+  subject: Math, score: 80.0
+
+======================
+
+add: Add a student's name and score
+show: Print all
+exit: Exit
+Please select: exit
+
+
+======Server======
+ryanpan@RyanPanPC $ python3 main_server.py      
+('127.0.0.1', 55006) connected
+{"command": "show", "parameters": {}}
+    server received: {'command': 'show', 'parameters': {}} from ('127.0.0.1', 55006)
+{"command": "add", "parameters": {"name": "Bill", "scores": {"English": 99.0, "Chinese": 60.0}}}
+    server received: {'command': 'add', 'parameters': {'name': 'Bill', 'scores': {'English': 99.0, 'Chinese': 60.0}}} from ('127.0.0.1', 55006)
+{"command": "show", "parameters": {}}
+    server received: {'command': 'show', 'parameters': {}} from ('127.0.0.1', 55006)
+{"command": "add", "parameters": {"name": "John", "scores": {"Math": 80.0}}}
+    server received: {'command': 'add', 'parameters': {'name': 'John', 'scores': {'Math': 80.0}}} from ('127.0.0.1', 55006)
+{"command": "show", "parameters": {}}
+    server received: {'command': 'show', 'parameters': {}} from ('127.0.0.1', 55006)
+{"command": "add", "parameters": {"name": "John", "scores": {"English": 90.0}}}
+    server received: {'command': 'add', 'parameters': {'name': 'John', 'scores': {'English': 90.0}}} from ('127.0.0.1', 55006)
+{"command": "show", "parameters": {}}
+    server received: {'command': 'show', 'parameters': {}} from ('127.0.0.1', 55006)
+
+('127.0.0.1', 55006) close connection
+('127.0.0.1', 55015) connected
+{"command": "show", "parameters": {}}
+    server received: {'command': 'show', 'parameters': {}} from ('127.0.0.1', 55015)
+  
+('127.0.0.1', 55015) close connection
+finish
+leaving .......
+
+ryanpan@RyanPanPC $ python3 main_server.py      
+('127.0.0.1', 50943) connected
+{"command": "show", "parameters": {}}
+    server received: {'command': 'show', 'parameters': {}} from ('127.0.0.1', 50943)
+
+('127.0.0.1', 50943) close connection
+finish
+leaving ....... 
+
